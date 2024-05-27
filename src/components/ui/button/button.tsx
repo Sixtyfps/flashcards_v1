@@ -1,5 +1,6 @@
 import {ComponentPropsWithoutRef} from 'react'
 import s from './button.module.scss'
+// clsx
 export type ButtonProps = {
     variant?: 'primary' | 'secondary'
     fullWidth?: boolean
