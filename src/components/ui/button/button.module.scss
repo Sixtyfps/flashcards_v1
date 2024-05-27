@@ -1,0 +1,53 @@
+.button {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  color: rgb(255, 255, 255);
+  font-family: Roboto;
+  text-align: center;
+  padding: 6px 28px 6px 28px;
+  border-radius: 4px
+}
+.primary {
+  background-color: rgb(140, 97, 255);
+}
+.primary:hover {
+  background-color: rgba(rgb(140, 97, 255), 0.9);
+}
+.primary:active {
+  background-color: rgba(rgb(140, 97, 255), 0.8);
+}
+.primary:focus {
+  outline: 0.5px solid rgba(rgb(140, 97, 255), 0.7);
+}
+.primary:disabled {
+  background-color: rgba(rgb(140, 97, 255), 0.5);
+  color:rgba(rgb(255, 255, 255), 0.5);
+}
+.secondary {
+  background-color: rgb(76, 76, 76);
+}
+.secondary:hover {
+  background-color: rgba(rgb(76, 76, 76), 0.9);
+}
+.secondary:active {
+  background-color: rgba(rgb(76, 76, 76), 0.8);
+}
+.secondary:focus {
+  outline: 0.5px solid rgba(rgb(76, 76, 76), 0.7);
+}
+.secondary:disabled {
+  background-color: rgba(rgb(76, 76, 76), 0.5);
+  color:rgba(rgb(255, 255, 255), 0.5);
+}
+.fullWidth {
+  width: 100%;
+  text-align: center;
+}
+.icon {
+  margin-right: 8.6px;
+  height: 1em;
+}
