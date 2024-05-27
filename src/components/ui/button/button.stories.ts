@@ -27,7 +27,6 @@ export const Primary: Story = {
 
 export const Secondary: Story = {
     args: {
-        Icon: testImg,
         variant: 'secondary',
         children: 'Secondary Button',
         disabled: false,
@@ -40,5 +39,14 @@ export const FullWidth: Story = {
         children: 'Full Width Primary Button',
         disabled: false,
         fullWidth: true,
+    },
+}
+
+export const ButtonWithIcons: Story = {
+    args: {
+        Icon: testImg,
+        variant: 'secondary',
+        children: 'Secondary Button',
+        disabled: false,
     },
 }

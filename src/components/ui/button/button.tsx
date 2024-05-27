@@ -1,6 +1,5 @@
 import {ComponentPropsWithoutRef} from 'react'
 import s from './button.module.scss'
-// import a from '../../../images/icons/buttonIcons/log-out.svg'
 export type ButtonProps = {
     variant?: 'primary' | 'secondary'
     fullWidth?: boolean
