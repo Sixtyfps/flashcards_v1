@@ -4,7 +4,7 @@ import s from './button.module.scss'
 export type ButtonProps = {
     variant?: 'primary' | 'secondary'
     fullWidth?: boolean
-    Icon?: any;
+    Icon?: string;
 } & ComponentPropsWithoutRef<'button'>
 
 
@@ -16,17 +16,17 @@ export const Button = ({ className, fullWidth = false, variant = 'primary', chil
     if (className) buttonClass += ` ${className}`;
     if (Icon && variant === 'primary') buttonClass += ` ${s.primaryWithIcon}`;
     if (Icon && variant === 'secondary') buttonClass += ` ${s.secondaryWithIcon}`;
+    if (Icon && variant === 'secondary') buttonClass += ` ${s.secondaryWithIcon}`;
 
 
     return (
         <button
             className={buttonClass}
             {...rest}
+
         >
             {Icon &&
-
                 <img className={s.icon} src={Icon}/>
-
             }
             {children}
         </button>
