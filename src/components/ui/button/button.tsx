@@ -16,6 +16,7 @@ export const Button = ({ className, fullWidth = false, variant = 'primary', chil
     if (className) buttonClass += ` ${className}`;
     if (Icon && variant === 'primary') buttonClass += ` ${s.primaryWithIcon}`;
     if (Icon && variant === 'secondary') buttonClass += ` ${s.secondaryWithIcon}`;
+    if (Icon && variant === 'secondary') buttonClass += ` ${s.secondaryWithIcon}`;
 
 
     return (
