@@ -11,7 +11,7 @@ export type CardProps<T extends ElementType = 'div'> = {
 } & ComponentPropsWithoutRef<T>
 
 export const Card = <T extends ElementType = 'div'>(props: CardProps<T>) => {
-  const { as: Component = 'div', className, isDark = false, maxWidth, ...rest } = props
+  const { as: Component = 'div', className, isDark = true, maxWidth, ...rest } = props
 
   return (
     <Component

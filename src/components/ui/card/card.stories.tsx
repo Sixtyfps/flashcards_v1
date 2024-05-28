@@ -5,8 +5,7 @@ import { Card } from './'
 const meta = {
   argTypes: {
     variant: {
-      control: { type: 'radio' },
-      options: ['primary', 'secondary'],
+      options: ['div', 'section', 'dayTheme', 'nightTheme'],
     },
   },
   component: Card,
@@ -17,40 +16,44 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Primary: Story = {
+export const Light: Story = {
   args: {
     children: (
       <p>
-        <div>test</div>
+        <div>Light</div>
       </p>
     ),
-    disabled: false,
+    isDark: false,
     maxWidth: '300px',
     variant: 'primary',
   },
 }
 
-export const Secondary: Story = {
+export const Dark: Story = {
   args: {
-    children: 'Secondary Card',
-    disabled: false,
-    variant: 'secondary',
-  },
-}
-
-export const FullWidth: Story = {
-  args: {
-    children: 'Full Width Primary Card',
-    disabled: false,
-    fullWidth: true,
+    children: (
+      <p>
+        <div>Dark</div>
+      </p>
+    ),
+    isDark: true,
+    maxWidth: '300px',
     variant: 'primary',
   },
 }
 
-export const AsLink: Story = {
+export const CardAsDiv: Story = {
   args: {
-    as: 'a',
-    children: 'Link that looks like a button',
+    as: 'div',
+    children: 'div',
+    variant: 'primary',
+  },
+}
+
+export const CardAsSection: Story = {
+  args: {
+    as: 'section',
+    children: 'section',
     variant: 'primary',
   },
 }
