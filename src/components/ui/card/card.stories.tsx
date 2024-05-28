@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Button } from './'
+import { Button } from '@/components/ui/button'
+
+import { Card } from './'
 
 const meta = {
   argTypes: {
@@ -9,18 +11,25 @@ const meta = {
       options: ['primary', 'secondary'],
     },
   },
-  component: Button,
+  component: Card,
   tags: ['autodocs'],
-  title: 'Components/Button',
-} satisfies Meta<typeof Button>
+  title: 'Components/Card',
+} satisfies Meta<typeof Card>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
-    children: 'Primary Card',
+    children: (
+      <p>
+        <div>
+          <Button>Test</Button>
+        </div>
+      </p>
+    ),
     disabled: false,
+    maxWidth: '300px',
     variant: 'primary',
   },
 }
