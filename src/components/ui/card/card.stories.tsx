@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Button } from '@/components/ui/button'
-
 import { Card } from './'
 
 const meta = {
@@ -23,9 +21,7 @@ export const Primary: Story = {
   args: {
     children: (
       <p>
-        <div>
-          <Button>Test</Button>
-        </div>
+        <div>test</div>
       </p>
     ),
     disabled: false,
