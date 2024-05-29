@@ -1,35 +1,23 @@
-import {ComponentPropsWithoutRef} from 'react'
+import { ComponentPropsWithoutRef, ElementType } from 'react'
 import s from './button.module.scss'
-// clsx
-export type ButtonProps = {
-    variant?: 'primary' | 'secondary'
-    fullWidth?: boolean
-    Icon?: string;
-} & ComponentPropsWithoutRef<'button'>
+import clsx from 'clsx'
 
+export type ButtonProps<T extends ElementType = 'button'> = {
+  as?: T
+  variant?: 'icon' | 'link' | 'primary' | 'secondary'
+  fullWidth?: boolean
+} & ComponentPropsWithoutRef<T>
 
+export const Button = <T extends ElementType = 'button'>(props: ButtonProps<T>) => {
+  const {
+    className,
+    fullWidth = false,
+    variant = 'primary',
+    as: Component = 'button',
+    children,
+    ...rest
+  } = props
+  let buttonClass = clsx(s.button, s[variant], fullWidth && s.fullWidth)
 
-export const Button = ({ className, fullWidth = false, variant = 'primary', children,Icon, ...rest }: ButtonProps) => {
-
-    let buttonClass = `${s.button} ${s[variant]}`;
-    if (fullWidth) buttonClass += ` ${s.fullWidth}`;
-    if (className) buttonClass += ` ${className}`;
-    if (Icon && variant === 'primary') buttonClass += ` ${s.primaryWithIcon}`;
-    if (Icon && variant === 'secondary') buttonClass += ` ${s.secondaryWithIcon}`;
-    if (Icon && variant === 'secondary') buttonClass += ` ${s.secondaryWithIcon}`;
-
-
-    return (
-        <button
-            className={buttonClass}
-            {...rest}
-
-        >
-            {Icon &&
-                <img className={s.icon} src={Icon}/>
-            }
-            {children}
-        </button>
-    )
+  return <Component className={`${buttonClass} ${className}`} {...rest} />
 }
-
