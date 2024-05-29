@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import testImg from '../../../images/icons/buttonIcons/log-out.svg'
+
 import { Button } from './'
 
 const meta = {
-  title: 'Components/Button',
-  component: Button,
-  tags: ['autodocs'],
   argTypes: {
     variant: {
-      options: ['primary', 'secondary'],
       control: { type: 'radio' },
+      options: ['primary', 'secondary', 'link', 'icon'],
     },
   },
+  component: Button,
+  tags: ['autodocs'],
+  title: 'Components/Button',
 } satisfies Meta<typeof Button>
 
 export default meta
@@ -19,35 +19,34 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
-    variant: 'primary',
-    title: 'Add New Card',
+    children: 'Primary Card',
     disabled: false,
-    children: 'sdsd',
+    variant: 'primary',
   },
 }
 
 export const Secondary: Story = {
   args: {
-    variant: 'secondary',
-    title: 'Secondary Button',
+    children: 'Secondary Card',
     disabled: false,
+    variant: 'secondary',
   },
 }
 
 export const FullWidth: Story = {
   args: {
-    variant: 'primary',
-    title: 'Full Width Primary Button',
+    children: 'Hello',
     disabled: false,
     fullWidth: true,
+    variant: 'primary',
   },
 }
 
-export const ButtonWithIcons: Story = {
+export const AsLink: Story = {
   args: {
-    Icon: testImg,
-    variant: 'secondary',
-    title: 'Secondary Button',
-    disabled: false,
+    as: 'a',
+    children: 'Link that',
+    to: 'https://google.com',
+    variant: 'link',
   },
 }

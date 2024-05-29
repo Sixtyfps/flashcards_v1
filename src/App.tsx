@@ -1,6 +1,7 @@
 import { BrowserRouter, Link } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
+import { SliderApp } from '@/components/ui/slider/slider'
 
 export function App() {
   return (
@@ -10,6 +11,7 @@ export function App() {
           Hello
         </Button>
       </BrowserRouter>
+      <SliderApp />
     </div>
   )
 }
