@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Button } from './'
+import { SliderApp } from './slider'
 
 const meta = {
   argTypes: {
@@ -9,10 +9,10 @@ const meta = {
       options: ['primary', 'secondary'],
     },
   },
-  component: Button,
+  component: SliderApp,
   tags: ['autodocs'],
-  title: 'Components/Button',
-} satisfies Meta<typeof Button>
+  title: 'Components/Slider',
+} satisfies Meta<typeof SliderApp>
 
 export default meta
 type Story = StoryObj<typeof meta>

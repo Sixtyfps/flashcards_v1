@@ -14,7 +14,6 @@ export const Button = <T extends ElementType = 'button'>(props: ButtonProps<T>) 
     fullWidth = false,
     variant = 'primary',
     as: Component = 'button',
-    children,
     ...rest
   } = props
   let buttonClass = clsx(s.button, s[variant], fullWidth && s.fullWidth)
