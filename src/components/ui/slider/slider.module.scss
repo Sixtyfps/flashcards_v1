@@ -26,11 +26,23 @@
 
 .SliderThumb {
   display: block;
-  width: 20px;
-  height: 20px;
-  background-color: white;
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-accent-500);
   box-shadow: 0 2px 10px var(--black-a7);
   border-radius: 10px;
+}
+
+.SliderThumb::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 50%;
 }
 
 .sliderContainer {
@@ -43,11 +55,8 @@
 
 .sliderValue {
   border: 1px solid var(--color-dark-300);
-  border-radius: 2px;
-}
-.doubleDigitPadding {
-  padding: 6px 9px;
-}
-.singleDigitPadding {
-  padding: 6px 14px 6px 13px;
+  width: 28px;
+  height: 25px;
+  text-align: center;
+  border-radius: 4px;
 }
