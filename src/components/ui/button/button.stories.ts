@@ -22,6 +22,7 @@ export const Primary: Story = {
     variant: 'primary',
     title: 'Add New Card',
     disabled: false,
+    children: 'sdsd',
   },
 }
 

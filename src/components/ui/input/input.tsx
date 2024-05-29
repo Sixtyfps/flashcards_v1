@@ -20,10 +20,9 @@ type SuperInputTextPropsType = ComponentPropsWithoutRef<'input'> & {
   inputType?: string
   label?: string
   variant?: 'email' | 'password' | 'normal'
-  onResetClick?: MouseEventHandler<HTMLDivElement>
+  onResetClick?: MouseEventHandler<HTMLImageElement>
 }
 
-///forwardRef - почитать
 export const SuperInputText = React.forwardRef<HTMLInputElement, SuperInputTextPropsType>(
   (
     {
