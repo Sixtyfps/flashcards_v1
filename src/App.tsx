@@ -1,12 +1,15 @@
-import { SuperInputText } from '@/components/ui/input/input'
+import { BrowserRouter, Link } from 'react-router-dom'
+
+import { Button } from '@/components/ui/button'
 
 export function App() {
   return (
     <div>
-      Hello
-      <SuperInputText type={'password'} />
-      <SuperInputText type={'text'} label={'dasdad'} error={''} />
-      <SuperInputText type={'text'} onResetClick={() => {}} value={'d'} />
+      <BrowserRouter>
+        <Button as={Link} to={'https://google.com'}>
+          Hello
+        </Button>
+      </BrowserRouter>
     </div>
   )
 }
