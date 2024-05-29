@@ -19,9 +19,5 @@ export const Button = <T extends ElementType = 'button'>(props: ButtonProps<T>) 
   } = props
   let buttonClass = clsx(s.button, s[variant], fullWidth && s.fullWidth)
 
-  return (
-    <Component className={`${buttonClass} ${className}`} {...rest}>
-      {children}
-    </Component>
-  )
+  return <Component className={`${buttonClass} ${className}`} {...rest} />
 }
