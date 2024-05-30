@@ -12,9 +12,9 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 const selectItems = [
-  { id: '1', title: 'Option 1', value: '1' },
-  { id: '2', title: 'Option 2', value: '2' },
-  { id: '3', title: 'Option 3', value: '3' },
+  { title: 'Option 1', value: '1' },
+  { title: 'Option 2', value: '2' },
+  { title: 'Option 3', value: '3' },
 ]
 
 export const SelectDefault: Story = {

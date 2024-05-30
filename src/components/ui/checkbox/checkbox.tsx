@@ -7,6 +7,8 @@ import * as CheckboxRadix from '@radix-ui/react-checkbox'
 import s from './checkbox.module.scss'
 
 export type CheckboxProps = {
+  // checked?: boolean
+  // onCheckedChange?: (checked: boolean) => void
   checkedDefault?: boolean
   disabled?: boolean
   id: string
