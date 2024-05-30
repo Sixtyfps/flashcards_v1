@@ -1,34 +1,38 @@
 import type { Meta, StoryObj } from '@storybook/react'
-
-import { DropDownMenu } from './dropDownMenu'
+import { UserDropdown } from '@/layout/header/user-dropwown/user-dropdown'
 
 const meta = {
-  component: DropDownMenu,
+  component: UserDropdown,
   tags: ['autodocs'],
   title: 'Components/DropDown',
-} satisfies Meta<typeof DropDownMenu>
+} satisfies Meta<typeof UserDropdown>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
+const user = {
+  email: 'sdsdadas@gmail.com',
+  photo: {
+    src: 'https://img.freepik.com/free-photo/cute-ai-generated-cartoon-bunny_23-2150288872.jpg?t=st=1717059140~exp=1717062740~hmac=ded8e9886d1e2ce436357fca0c4af8864b985d5a72da7ddf7e30524e709bd6c9&w=740',
+    alt: 'd',
+  },
+  userName: 'Artsiom',
+}
+
 export const WorkMenuWithoutImages: Story = {
   args: {
-    email: 'sadasdasd@gmail.com',
-    username: 'Artsiom',
+    photo: '',
+    email: user.email,
+    name: user.userName,
+    photoDesc: user.photo.alt,
   },
 }
 
 export const WorkMenuWithImages: Story = {
   args: {
-    email: 'sadasdasd@gmail.com',
-    username: 'Artsiom',
-    image:
-      'https://img.freepik.com/free-photo/cute-ai-generated-cartoon-bunny_23-2150288872.jpg?t=st=1717059140~exp=1717062740~hmac=ded8e9886d1e2ce436357fca0c4af8864b985d5a72da7ddf7e30524e709bd6c9&w=740',
-  },
-}
-
-export const MiniMenu: Story = {
-  args: {
-    miniMenu: 'd',
+    email: user.email,
+    name: user.userName,
+    photoDesc: user.photo.alt,
+    photo: user.photo.src,
   },
 }
