@@ -4,11 +4,7 @@ import * as RadixTabs from '@radix-ui/react-tabs'
 
 import styles from './tab.module.scss'
 
-export type TabProps<T extends ElementType = 'div'> = {
-  as?: T
-  isDark?: boolean
-  maxWidth?: string
-} & ComponentPropsWithoutRef<T>
+export type TabProps<T extends ElementType = 'div'> = {} & ComponentPropsWithoutRef<T>
 
 export const Tab = () => {
   return (
