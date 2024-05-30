@@ -1,7 +1,5 @@
 import { BrowserRouter, Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
-import { DropDownMenu } from '@/components/ui/dropDown'
-
 export function App() {
   return (
     <div style={{ display: 'flex', justifyContent: 'space-around' }}>
@@ -10,8 +8,6 @@ export function App() {
           Hello
         </Button>
       </BrowserRouter>
-      <DropDownMenu username={'Artsiom'} email={'youtomatch@gmail.com'} />
-      <DropDownMenu miniMenu={'s'} />
     </div>
   )
 }

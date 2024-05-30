@@ -37,17 +37,15 @@
   outline: none;
 }
 
+.dropdownItemHeader {
+  display: flex;
+  align-items: flex-start;
+  outline: none;
+}
+
 .dropdownItem:hover {
-  color: blue;
-}
-
-.dropdownLink {
-  color: initial;
-  text-decoration: none;
-}
-
-.dropdownLink:hover {
-  color: blue;
+  cursor: pointer;
+  color: #add8e6;
 }
 
 .dropdownTrigger {
@@ -55,10 +53,13 @@
   border: 0;
   padding: 0;
   outline: none;
+  right: 0;
+  display: flex;
+  align-items: center;
 }
 
-.dropdownItem div {
-  margin-right: 8px;
+.dropdownItemHeader div {
+  margin-left: 8px;
 }
 
 .imageIconName {
