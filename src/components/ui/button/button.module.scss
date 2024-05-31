@@ -84,8 +84,10 @@
 }
 
 .icon {
+  display: flex;
   margin: 0;
   padding: 0;
+  gap: 10px;
 
   &:disabled {
     color: var(--color-dark-300);
