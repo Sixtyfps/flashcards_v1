@@ -1,9 +1,9 @@
 import React, {
   ChangeEvent,
   ComponentPropsWithoutRef,
-  KeyboardEvent,
   MouseEventHandler,
   ReactNode,
+  useId,
   useState,
 } from 'react'
 import s from './input.module.scss'
@@ -28,7 +28,6 @@ export const SuperInputText = React.forwardRef<HTMLInputElement, SuperInputTextP
     {
       onChange,
       onChangeText,
-      onKeyPress,
       onEnter,
       error,
       className,
@@ -45,53 +44,56 @@ export const SuperInputText = React.forwardRef<HTMLInputElement, SuperInputTextP
     },
     ref
   ) => {
+    const finalId = useLabelId(id)
     const [isVisible, setIsVisible] = useState(false)
     const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
       onChange?.(e)
       onChangeText?.(e.currentTarget.value)
     }
-    const onKeyPressCallback = (e: KeyboardEvent<HTMLInputElement>) => {
-      if (e.key === 'Enter') {
-        onEnter?.()
-        onKeyPress?.(e)
-      }
-    }
 
     const finalSpanClassName = s.error + (spanClassName ? ' ' + spanClassName : '')
 
-    let inputClass = `${s.inputWrapper} ${s[variant]}`
-    if (error) inputClass += ` ${s.inputError}`
-    if (type === 'password') inputClass += ` ${s.password}`
+    let inputClasses = [s.inputWrapper, s[variant]]
+    if (error) inputClasses.push(s.inputError)
+    if (type === 'password') inputClasses.push(s.password)
 
     return (
       <div>
-        {label && <label htmlFor={id}>{label}</label>}
-        <div className={inputClass}>
+        {label && <label htmlFor={finalId}>{label}</label>}
+        <div className={inputClasses.join(' ')}>
           {onResetClick && <img className={s.search} onClick={onResetClick} src={search} />}
           <input
             ref={ref}
-            id={id}
+            id={finalId}
             type={type === 'password' && isVisible ? 'text' : type}
             onChange={onChangeCallback}
-            onKeyDown={onKeyPressCallback}
             className={s.input}
             placeholder={onResetClick ? 'Input search' : error ? 'Error' : 'Input'}
             disabled={disabled}
             value={value}
             {...restProps}
           />
-          {type === 'password' &&
-            (isVisible ? (
-              <img onClick={() => setIsVisible(!isVisible)} className={s.icon} src={eysClose} />
-            ) : (
-              <img onClick={() => setIsVisible(!isVisible)} className={s.icon} src={eysOpen} />
-            ))}
+          {type === 'password' && (
+            <img
+              onClick={() => setIsVisible(!isVisible)}
+              className={s.icon}
+              src={isVisible ? eysClose : eysOpen}
+            />
+          )}
           {onResetClick && !!value && <img onClick={onResetClick} src={deleteIcon} />}
         </div>
-        <div id={id ? id + '-span' : undefined} className={finalSpanClassName}>
-          {error}
-        </div>
+        <div className={finalSpanClassName}>{error}</div>
       </div>
     )
   }
 )
+
+export function useLabelId(id?: string) {
+  const generatedId = useId()
+
+  if (!id) {
+    return generatedId
+  }
+
+  return id
+}
