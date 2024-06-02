@@ -21,7 +21,7 @@ type SuperInputTextPropsType = {
   variant?: 'email' | 'normal' | 'password'
 } & ComponentPropsWithoutRef<'input'>
 
-export const SuperInputText = React.forwardRef<HTMLInputElement, SuperInputTextPropsType>(
+export const TextField = React.forwardRef<HTMLInputElement, SuperInputTextPropsType>(
   (
     {
       className,
