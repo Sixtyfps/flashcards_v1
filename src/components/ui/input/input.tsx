@@ -1,45 +1,43 @@
-import React, {
-  ChangeEvent,
-  ComponentPropsWithoutRef,
-  MouseEventHandler,
-  ReactNode,
-  useId,
-  useState,
-} from 'react'
-import s from './input.module.scss'
-import eysOpen from '../../../images/icons/input/eye-outline.svg'
-import eysClose from '../../../images/icons/input/eye-off-outline.svg'
-import deleteIcon from '../../../images/icons/input/close-outline.svg'
-import search from '../../../images/icons/input/Search.svg'
+import React, { ChangeEvent, ComponentPropsWithoutRef, ReactNode, useId, useState } from 'react'
 
-type SuperInputTextPropsType = ComponentPropsWithoutRef<'input'> & {
-  onChangeText?: (value: string) => void
-  onEnter?: () => void
+import { Button } from '@/components/ui/button'
+import { Typography } from '@/components/ui/typography'
+
+import s from './input.module.scss'
+
+import search from '../../../images/icons/input/Search.svg'
+import deleteIcon from '../../../images/icons/input/close-outline.svg'
+import eysClose from '../../../images/icons/input/eye-off-outline.svg'
+import eysOpen from '../../../images/icons/input/eye-outline.svg'
+
+type SuperInputTextPropsType = {
   error?: ReactNode
-  spanClassName?: string
   inputType?: string
   label?: string
-  variant?: 'email' | 'password' | 'normal'
-  onResetClick?: MouseEventHandler<HTMLImageElement>
-}
+  onChangeText?: (value: string) => void
+  onEnter?: () => void
+  onReset?: () => void
+  spanClassName?: string
+  variant?: 'email' | 'normal' | 'password'
+} & ComponentPropsWithoutRef<'input'>
 
 export const SuperInputText = React.forwardRef<HTMLInputElement, SuperInputTextPropsType>(
   (
     {
-      onChange,
-      onChangeText,
-      onEnter,
-      error,
       className,
-      spanClassName,
+      disabled,
+      error,
       id,
       inputType,
       label,
-      variant = 'normal',
+      onChange,
+      onChangeText,
+      onEnter,
+      onReset,
+      spanClassName,
       type = 'text',
-      onResetClick,
-      disabled,
       value,
+      variant = 'normal',
       ...restProps
     },
     ref
@@ -53,36 +51,51 @@ export const SuperInputText = React.forwardRef<HTMLInputElement, SuperInputTextP
 
     const finalSpanClassName = s.error + (spanClassName ? ' ' + spanClassName : '')
 
-    let inputClasses = [s.inputWrapper, s[variant]]
-    if (error) inputClasses.push(s.inputError)
-    if (type === 'password') inputClasses.push(s.password)
+    const inputClasses = [s.inputWrapper, s[variant]]
+
+    if (error) {
+      inputClasses.push(s.inputError)
+    }
+    if (type === 'password') {
+      inputClasses.push(s.password)
+    }
 
     return (
       <div>
-        {label && <label htmlFor={finalId}>{label}</label>}
+        {label && (
+          <Typography as={'label'} className={s.label} htmlFor={finalId} variant={'body2'}>
+            {label}
+          </Typography>
+        )}
         <div className={inputClasses.join(' ')}>
-          {onResetClick && <img className={s.search} onClick={onResetClick} src={search} />}
+          {onReset && <img className={s.search} src={search} />}
           <input
-            ref={ref}
-            id={finalId}
-            type={type === 'password' && isVisible ? 'text' : type}
-            onChange={onChangeCallback}
             className={s.input}
-            placeholder={onResetClick ? 'Input search' : error ? 'Error' : 'Input'}
             disabled={disabled}
+            id={finalId}
+            onChange={onChangeCallback}
+            placeholder={onReset ? 'Input search' : error ? 'Error' : 'Input'}
+            ref={ref}
+            type={type === 'password' && isVisible ? 'text' : type}
             value={value}
             {...restProps}
           />
           {type === 'password' && (
             <img
-              onClick={() => setIsVisible(!isVisible)}
               className={s.icon}
+              onClick={() => setIsVisible(!isVisible)}
               src={isVisible ? eysClose : eysOpen}
             />
           )}
-          {onResetClick && !!value && <img onClick={onResetClick} src={deleteIcon} />}
+          {onReset && !!value && (
+            <Button onClick={onReset}>
+              <img src={deleteIcon} />
+            </Button>
+          )}
         </div>
-        <div className={finalSpanClassName}>{error}</div>
+        <Typography as={'div'} className={finalSpanClassName}>
+          {error}
+        </Typography>
       </div>
     )
   }
