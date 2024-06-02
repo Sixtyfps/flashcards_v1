@@ -13,56 +13,60 @@ type Story = StoryObj<typeof meta>
 
 export const CheckboxDefault: Story = {
   args: {
-    defaultChecked: true,
+    id: 's_1',
   },
 }
 
-export const CheckboxUndefaultChecked: Story = {
+export const CheckboxUnchecked: Story = {
   args: {
-    defaultChecked: false,
+    checkedDefault: false,
+    id: 's_1',
   },
 }
 
 export const CheckboxWithLabel: Story = {
   args: {
-    defaultChecked: true,
+    id: 's_2',
     label: 'Check-box',
   },
 }
 
-export const CheckboxWithLabelUndefaultChecked: Story = {
+export const CheckboxWithLabelUnchecked: Story = {
   args: {
-    defaultChecked: false,
+    checkedDefault: false,
+    id: 's_2',
     label: 'Check-box',
   },
 }
 
 export const CheckboxDisabled: Story = {
   args: {
-    defaultChecked: true,
     disabled: true,
+    id: 's_3',
   },
 }
 
-export const CheckboxDisabledUndefaultChecked: Story = {
+export const CheckboxDisabledUnchecked: Story = {
   args: {
-    defaultChecked: false,
+    checkedDefault: false,
     disabled: true,
+    id: 's_3',
   },
 }
 
 export const CheckboxWithLabelDisabled: Story = {
   args: {
-    defaultChecked: true,
     disabled: true,
+    id: 's_4',
     label: 'Check-box',
   },
 }
 
-export const CheckboxWithLabelDisabledUndefaultChecked: Story = {
+export const CheckboxWithLabelDisabledUnchecked: Story = {
   args: {
-    defaultChecked: false,
+    checkedDefault: false,
     disabled: true,
+    id: 's_4',
     label: 'Check-box',
   },
 }

@@ -14,15 +14,11 @@ type SelectItemProps = {
 
 export const SelectItem = React.forwardRef(
   (
-    { children, className, ...restProps }: SelectItemProps,
+    { children, className, ...props }: SelectItemProps,
     forwardedRef: ForwardedRef<HTMLDivElement>
   ) => {
     return (
-      <SelectRadix.Item
-        className={`${s.SelectItem} ${className}`}
-        {...restProps}
-        ref={forwardedRef}
-      >
+      <SelectRadix.Item className={`${s.SelectItem} ${className}`} {...props} ref={forwardedRef}>
         <SelectRadix.ItemText>
           <Typography as={'div'} className={s.SelectItemText}>
             {children}

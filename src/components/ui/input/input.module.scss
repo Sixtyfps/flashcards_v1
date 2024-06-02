@@ -50,6 +50,12 @@
   border-radius: 2px;
   box-sizing: border-box;
 }
+.inputWrapper:focus-within {
+  border-color: rgb(47, 104, 204);
+  outline: none;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
 
 .password {
   border: 1px solid rgb(76, 76, 76);
@@ -62,8 +68,11 @@
   outline: none;
   box-sizing: border-box;
 }
+.inputError .input {
+  color: rgb(242, 61, 97);
+}
 
-.inputWrapper label {
+.label {
   color: rgb(128, 128, 128);
   font-size: 14px;
 }
