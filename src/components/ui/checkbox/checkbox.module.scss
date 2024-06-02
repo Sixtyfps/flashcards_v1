@@ -1,15 +1,9 @@
 .Checkbox {
   display: flex;
   align-items: center;
-  &.CheckboxChecked {
-    .CheckboxRoot {
-      background-color: var(--color-light-100);
-      border-color: var(--color-light-100);
-    }
-  }
   &.CheckboxDisabled {
-    &.CheckboxChecked {
-      .CheckboxRoot {
+    .CheckboxRoot {
+      &[aria-checked='true'] {
         background-color: var(--color-dark-100);
         border-color: var(--color-dark-100);
       }
@@ -59,6 +53,10 @@
     &:before {
       background-color: var(--color-dark-100);
     }
+  }
+  &[aria-checked='true'] {
+    background-color: var(--color-light-100);
+    border-color: var(--color-light-100);
   }
   &::before {
     content: '';
