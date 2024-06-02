@@ -2,6 +2,18 @@
   display: flex;
   flex-direction: column;
 }
+.SelectSmall {
+  .SelectTrigger {
+    padding: 0 2px 0 6px;
+    height: 24px;
+    width: 50px;
+    &[data-placeholder] {
+      font-size: var(--font-size-s);
+      line-height: var(--line-height-m);
+    }
+  }
+}
+
 .SelectLabel {
   color: var(--color-dark-100);
   &Disabled {

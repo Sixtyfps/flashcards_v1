@@ -7,6 +7,7 @@ import * as SelectRadix from '@radix-ui/react-select'
 import clsx from 'clsx'
 
 import s from './select.module.scss'
+import sItem from './selectItem/selectItem.module.scss'
 
 import { SelectItem } from './selectItem/selectItem'
 
@@ -20,13 +21,21 @@ type SelectProps = {
   items: selectItem[]
   label?: string
   placeholder?: string
+  variant?: 'large' | 'small'
 } & ComponentPropsWithoutRef<typeof SelectRadix.Root>
 
-export const Select = ({ disabled, items, label, placeholder, ...restProps }: SelectProps) => {
+export const Select = ({
+  disabled,
+  items,
+  label,
+  placeholder,
+  variant = 'large',
+  ...restProps
+}: SelectProps) => {
   const id = useId()
 
   return (
-    <div className={s.SelectWrapp}>
+    <div className={clsx(s.SelectWrapp, variant === 'small' ? s.SelectSmall : '')}>
       {label && (
         <Typography
           as={'label'}
@@ -52,7 +61,11 @@ export const Select = ({ disabled, items, label, placeholder, ...restProps }: Se
             <SelectRadix.Viewport className={s.SelectViewport}>
               <SelectRadix.Group>
                 {items.map((item, index) => (
-                  <SelectItem key={`${item.value}-${index}`} value={item.value}>
+                  <SelectItem
+                    className={clsx(variant === 'small' ? sItem.SelectItemSmall : '')}
+                    key={`${item.value}-${index}`}
+                    value={item.value}
+                  >
                     {item.title}
                   </SelectItem>
                 ))}
