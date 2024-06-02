@@ -17,7 +17,7 @@ export const CheckboxDefault: Story = {
   },
 }
 
-export const CheckboxUndefaultChecked: Story = {
+export const CheckboxUnchecked: Story = {
   args: {
     defaultChecked: false,
   },
@@ -30,7 +30,7 @@ export const CheckboxWithLabel: Story = {
   },
 }
 
-export const CheckboxWithLabelUndefaultChecked: Story = {
+export const CheckboxWithLabelUnchecked: Story = {
   args: {
     defaultChecked: false,
     label: 'Check-box',
@@ -39,29 +39,29 @@ export const CheckboxWithLabelUndefaultChecked: Story = {
 
 export const CheckboxDisabled: Story = {
   args: {
-    defaultChecked: true,
     disabled: true,
+    id: 's_3',
   },
 }
 
-export const CheckboxDisabledUndefaultChecked: Story = {
+export const CheckboxDisabledUnchecked: Story = {
   args: {
-    defaultChecked: false,
+    defaultChecked: true,
     disabled: true,
   },
 }
 
 export const CheckboxWithLabelDisabled: Story = {
   args: {
-    defaultChecked: true,
+    defaultChecked: false,
     disabled: true,
     label: 'Check-box',
   },
 }
 
-export const CheckboxWithLabelDisabledUndefaultChecked: Story = {
+export const CheckboxWithLabelDisabledUnchecked: Story = {
   args: {
-    defaultChecked: false,
+    defaultChecked: true,
     disabled: true,
     label: 'Check-box',
   },

@@ -2,12 +2,12 @@
   display: flex;
   align-items: center;
   &.CheckboxDisabled {
-    .CheckboxRoot {
-      &[aria-checked='true'] {
-        background-color: var(--color-dark-100);
-        border-color: var(--color-dark-100);
+      .CheckboxRoot {
+        &[aria-checked='true'] {
+          background-color: var(--color-dark-100);
+          border-color: var(--color-dark-100);
+        }
       }
-    }
     .CheckboxRoot {
       border-color: var(--color-dark-100);
       cursor: auto;

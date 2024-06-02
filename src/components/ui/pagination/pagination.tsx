@@ -1,16 +1,21 @@
+import { useMemo } from 'react'
+
+import { v4 as uuidv4 } from 'uuid'
+
 import s from './pagination.module.scss'
 
 type Props = {
-  totalItems: number
-  itemsPerPage: number
   currentPage: number
   handlePageChange: (page: number) => void
+  itemsPerPage: number
+  totalItems: number
 }
 
-export const Pagination = ({ totalItems, itemsPerPage, currentPage, handlePageChange }: Props) => {
+const generatePagination = (totalItems: number, itemsPerPage: number, currentPage: number) => {
   const totalPages = Math.ceil(totalItems / itemsPerPage)
 
   let pages = []
+
   if (totalPages <= 7) {
     for (let i = 1; i <= totalPages; i++) {
       pages.push(i)
@@ -27,27 +32,38 @@ export const Pagination = ({ totalItems, itemsPerPage, currentPage, handlePageCh
       pages = [1, '...', totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages]
     }
   }
+
+  return { pages, totalPages }
+}
+
+export const Pagination = ({ currentPage, handlePageChange, itemsPerPage, totalItems }: Props) => {
+  const { pages, totalPages } = useMemo(() => {
+    return generatePagination(totalItems, itemsPerPage, currentPage)
+  }, [currentPage, itemsPerPage, totalItems])
+
   return (
     <div>
       <button
-        disabled={currentPage === 1}
         className={s.navigationButton}
+        disabled={currentPage === 1}
         onClick={() => handlePageChange(currentPage - 1)}
       >
         {'<'}
       </button>
       {pages.map(page =>
         typeof page === 'string' ? (
-          <span className={s.ellipsis}>{page}</span>
+          <span className={s.ellipsis} key={uuidv4()}>
+            {page}
+          </span>
         ) : (
           typeof page === 'number' && (
             <button
-              key={page}
               className={
                 page === currentPage
                   ? `${s.paginationButton} ${s.activePageButton}`
                   : s.paginationButton
               }
+              key={page}
               onClick={() => handlePageChange(page)}
             >
               {page}
@@ -56,8 +72,8 @@ export const Pagination = ({ totalItems, itemsPerPage, currentPage, handlePageCh
         )
       )}
       <button
-        disabled={currentPage === totalPages}
         className={s.navigationButton}
+        disabled={currentPage === totalPages}
         onClick={() => handlePageChange(currentPage + 1)}
       >
         {'>'}
