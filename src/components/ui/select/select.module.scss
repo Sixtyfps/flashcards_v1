@@ -25,7 +25,8 @@
     background-color: var(--color-dark-500);
   }
   &:focus {
-    border-color: var(--color-info-700);
+    border-color: transparent;
+    outline: 2px solid var(--color-info-700);
   }
   &:active {
     border-color: var(--color-dark-100);
