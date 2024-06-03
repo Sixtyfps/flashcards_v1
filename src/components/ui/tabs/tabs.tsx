@@ -1,28 +1,46 @@
+import { FC } from 'react'
+
 import * as RadixTabs from '@radix-ui/react-tabs'
 
 import styles from './tabs.module.scss'
 
-export type TabsProps = {}
+export type TabType = {
+  disabled?: boolean
+  title: string
+  // A unique value that associates the trigger with a content
+  value: string
+}
 
-// value
-// onChange
-//
+export type TabsProps = {
+  // use when you do not need to control the state of the tabs
+  defaultValue?: string
+  // The value of the tab that should be active when initially rendered
+  // Event handler called when the value changes
+  onValueChange?: (value: string) => void
+  tabs: TabType[]
+  // The controlled value of the tab to activate. Should be used in conjunction with onValueChange
+  value?: string
+}
 
-export const Tabs = () => {
+export const Tabs: FC<TabsProps> = ({ defaultValue, onValueChange, tabs, value }) => {
   return (
-    <RadixTabs.Root className={styles.RadixTabsRoot}>
+    <RadixTabs.Root
+      className={styles.RadixTabsRoot}
+      defaultValue={defaultValue}
+      onValueChange={onValueChange}
+      value={value}
+    >
       <RadixTabs.List className={styles.RadixTabsList}>
-        <RadixTabs.Trigger className={styles.RadixTabsTrigger} value={'tab1'}>
-          Switch_1
-        </RadixTabs.Trigger>
-
-        <RadixTabs.Trigger className={styles.RadixTabsTrigger} value={'tab1'}>
-          Switch_3
-        </RadixTabs.Trigger>
-
-        <RadixTabs.Trigger className={styles.RadixTabsTrigger} value={'tab2'}>
-          Switch_4
-        </RadixTabs.Trigger>
+        {tabs.map(tab => (
+          <RadixTabs.Trigger
+            className={styles.RadixTabsTrigger}
+            disabled={tab.disabled}
+            key={tab.value}
+            value={tab.value}
+          >
+            {tab.title}
+          </RadixTabs.Trigger>
+        ))}
       </RadixTabs.List>
     </RadixTabs.Root>
   )
