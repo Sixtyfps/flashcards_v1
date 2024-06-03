@@ -1,11 +1,13 @@
-import { useId } from 'react'
+import { ComponentPropsWithoutRef, useId } from 'react'
 
 import { Typography } from '@/components/ui/typography'
 import ArrowDown from '@/images/icons/ArrowDown'
 import ArrowTop from '@/images/icons/ArrowTop'
 import * as SelectRadix from '@radix-ui/react-select'
+import clsx from 'clsx'
 
 import s from './select.module.scss'
+import sItem from './selectItem/selectItem.module.scss'
 
 import { SelectItem } from './selectItem/selectItem'
 
@@ -19,24 +21,32 @@ type SelectProps = {
   items: selectItem[]
   label?: string
   placeholder?: string
-}
+  variant?: 'large' | 'small'
+} & ComponentPropsWithoutRef<typeof SelectRadix.Root>
 
-export const Select = ({ disabled, items, label, placeholder }: SelectProps) => {
+export const Select = ({
+  disabled,
+  items,
+  label,
+  placeholder,
+  variant = 'large',
+  ...restProps
+}: SelectProps) => {
   const id = useId()
 
   return (
-    <div className={s.SelectWrapp}>
+    <div className={clsx(s.SelectWrapp, variant === 'small' ? s.SelectSmall : '')}>
       {label && (
         <Typography
           as={'label'}
-          className={`${s.SelectLabel} ${disabled ? s.SelectLabelDisabled : ''}`}
+          className={clsx(s.SelectLabel, disabled ? s.SelectLabelDisabled : '', s.SelectLabel)}
           htmlFor={id}
           variant={'body2'}
         >
           {label}
         </Typography>
       )}
-      <SelectRadix.Root disabled={disabled}>
+      <SelectRadix.Root disabled={disabled} {...restProps}>
         <SelectRadix.Trigger aria-label={'Food'} className={s.SelectTrigger} id={id}>
           <SelectRadix.Value placeholder={placeholder}></SelectRadix.Value>
           <SelectRadix.Icon className={s.SelectIcon}>
@@ -50,8 +60,12 @@ export const Select = ({ disabled, items, label, placeholder }: SelectProps) => 
             </SelectRadix.ScrollUpButton>
             <SelectRadix.Viewport className={s.SelectViewport}>
               <SelectRadix.Group>
-                {items.map(item => (
-                  <SelectItem key={item.value} value={item.value}>
+                {items.map((item, index) => (
+                  <SelectItem
+                    className={clsx(variant === 'small' ? sItem.SelectItemSmall : '')}
+                    key={`${item.value}-${index}`}
+                    value={item.value}
+                  >
                     {item.title}
                   </SelectItem>
                 ))}

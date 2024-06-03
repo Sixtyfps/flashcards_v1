@@ -1,7 +1,6 @@
-import { ChangeEvent } from 'react'
 import { FieldValues, UseControllerProps, useController } from 'react-hook-form'
 
-import { TextField } from '../input/input'
+import { SuperInputTextPropsType, TextField } from '../input/input'
 
 type Props<T extends FieldValues> = Omit<
   SuperInputTextPropsType,
@@ -19,16 +18,16 @@ export const FormInput = <T extends FieldValues>({
   ...restProps
 }: Props<T>) => {
   const {
-    field: { onBlur, onChange, ref, value, ...field },
+    field: { name: fieldName, onBlur, onChange, ref, value, ...field },
+    fieldState: { error },
   } = useController({ control, defaultValue, disabled, name, rules, shouldUnregister })
 
   return (
     <TextField
       {...restProps}
       disabled={disabled}
-      name={name}
-      onBlur={onBlur}
-      onChange={e => onChange(e as unknown as ChangeEvent)}
+      error={error?.message}
+      name={fieldName}
       ref={ref}
       value={value}
       {...field}

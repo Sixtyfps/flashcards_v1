@@ -10,7 +10,7 @@ import deleteIcon from '../../../images/icons/input/close-outline.svg'
 import eysClose from '../../../images/icons/input/eye-off-outline.svg'
 import eysOpen from '../../../images/icons/input/eye-outline.svg'
 
-type SuperInputTextPropsType = {
+export type SuperInputTextPropsType = {
   error?: ReactNode
   inputType?: string
   label?: string

@@ -41,7 +41,7 @@ export const SearchInput: Story = {
   args: {
     disabled: true,
     id: 'super-input-search',
-    onResetClick: () => {},
+    onReset: () => {},
     type: 'text',
   },
 }
