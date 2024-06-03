@@ -1,12 +1,14 @@
-import { ComponentPropsWithoutRef, ElementType } from 'react'
-
 import * as RadixTabs from '@radix-ui/react-tabs'
 
-import styles from './tab.module.scss'
+import styles from './tabs.module.scss'
 
-export type TabProps<T extends ElementType = 'div'> = {} & ComponentPropsWithoutRef<T>
+export type TabsProps = {}
 
-export const Tab = () => {
+// value
+// onChange
+//
+
+export const Tabs = () => {
   return (
     <RadixTabs.Root className={styles.RadixTabsRoot}>
       <RadixTabs.List className={styles.RadixTabsList}>
