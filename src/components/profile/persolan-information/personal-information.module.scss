@@ -1,0 +1,57 @@
+.PersonalInformation {
+  padding: 33px 15px 40px;
+}
+.Title {
+  margin-bottom: 27px;
+}
+
+.Avatar {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  margin: 0 auto 10px;
+  position: relative;
+  img {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: cover;
+  }
+  .ButtonEdit {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+.ButtonEdit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-dark-300);
+  transition: all 0.3s;
+  &.ButtonEditTransparent {
+    background-color: transparent;
+  }
+  &:hover {
+    background-color: var(--color-accent-500);
+  }
+}
+
+.Name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .ButtonEdit {
+    margin-left: 5px;
+  }
+}
+
+.Email {
+  color: var(--color-dark-100);
+  margin-bottom: 13px;
+}
