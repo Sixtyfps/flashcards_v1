@@ -6,7 +6,7 @@ const meta = {
   argTypes: {
     variant: {
       control: { type: 'radio' },
-      options: ['primary', 'secondary'],
+      options: ['primary', 'secondary', 'link', 'icon'],
     },
   },
   component: Button,
@@ -35,7 +35,7 @@ export const Secondary: Story = {
 
 export const FullWidth: Story = {
   args: {
-    children: 'Full Width Primary Card',
+    children: 'Hello',
     disabled: false,
     fullWidth: true,
     variant: 'primary',
@@ -44,7 +44,9 @@ export const FullWidth: Story = {
 
 export const AsLink: Story = {
   args: {
-    children: 'Link that looks like a button',
-    variant: 'primary',
+    as: 'a',
+    children: 'Link that',
+    to: 'https://google.com',
+    variant: 'link',
   },
 }
