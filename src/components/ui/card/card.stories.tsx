@@ -16,6 +16,9 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+// 1 - стандартная
+// 2 - c disabled
+
 export const Light: Story = {
   args: {
     children: (
