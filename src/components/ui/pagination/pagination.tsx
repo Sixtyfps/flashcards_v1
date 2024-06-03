@@ -24,7 +24,7 @@ const generatePagination = (totalItems: number, itemsPerPage: number, currentPag
     for (let i = 1; i <= currentPage; i++) {
       pages.push(i)
     }
-    if (currentPage > 3 && currentPage < totalPages - 3) {
+    if (currentPage > 3 && currentPage < totalPages - 4) {
       pages = [1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages]
     } else if (currentPage <= 3) {
       pages = [1, 2, 3, 4, 5, '...', totalPages]
