@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { SubmitHandler } from 'react-hook-form'
 
-import { FormType, SignIn } from './sing-in'
+import { FormType, SignIn } from '@/components/auth/sing-in/sing-in'
 
 const meta = {
   component: SignIn,
@@ -16,7 +16,7 @@ const handleSignIn: SubmitHandler<FormType> = data => {
   console.log('Form Data:', data)
 }
 
-export const Primary: Story = {
+export const SingIn: Story = {
   args: {
     onSubmit: handleSignIn,
   },
