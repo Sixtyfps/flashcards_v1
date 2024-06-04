@@ -20,3 +20,12 @@ export const PersonalInformationCard: Story = {
     name: 'Ivan',
   },
 }
+
+export const PersonalInformationCardEditMode: Story = {
+  args: {
+    editModeDefault: true,
+    email: 'j&johnson@gmail.com',
+    img: avatar,
+    name: 'Ivan',
+  },
+}
