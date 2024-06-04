@@ -1,23 +1,24 @@
-import s from '@/components/ui/dropDown/dropDownMenu.module.scss'
 import { DropDownItem } from '@/components/ui/dropDown/dropDownItem'
-import { Typography } from '@/components/ui/typography'
+import { DropDownMenu } from '@/components/ui/dropDown/dropDownMenu'
 import { DropDownSeparator } from '@/components/ui/dropDown/dropDownSeparator'
+import { Typography } from '@/components/ui/typography'
 import { ProfleSvg } from '@/images/icons/dropDown/ProfleSvg'
 import { SingOutSvg } from '@/images/icons/dropDown/SingOutSvg'
-import { DropDownMenu } from '@/components/ui/dropDown/dropDownMenu'
+
+import s from '@/components/ui/dropDown/dropDownMenu.module.scss'
 
 type Props = {
-  photo: string
-  photoDesc: string
   email: string
   name: string
+  photo: string
+  photoDesc: string
 }
 
-export const UserDropdown = ({ name, photoDesc, email, photo }: Props) => {
-  const getInitials = (name: string): string => name.split(' ')[0][0].toUpperCase()
+export const UserDropdown = ({ email, name, photo, photoDesc }: Props) => {
+  const getInitials = (name: string): string => name[0].toUpperCase()
 
   const profileImage = photo ? (
-    <img src={photo} alt={photoDesc} className={s.imageIconName} />
+    <img alt={photoDesc} className={s.imageIconName} src={photo} />
   ) : (
     <p className={s.imageIconName}>{getInitials(name)}</p>
   )
@@ -28,10 +29,10 @@ export const UserDropdown = ({ name, photoDesc, email, photo }: Props) => {
         <DropDownItem className={s.dropdownItemHeader}>
           {profileImage}
           <div>
-            <Typography variant={'subtitle2'} style={{ fontSize: '14px' }}>
+            <Typography style={{ fontSize: '14px' }} variant={'subtitle2'}>
               {email}
             </Typography>
-            <Typography variant={'caption'} style={{ fontSize: '12px' }}>
+            <Typography style={{ fontSize: '12px' }} variant={'caption'}>
               {name}
             </Typography>
           </div>

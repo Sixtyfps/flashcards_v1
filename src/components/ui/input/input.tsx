@@ -74,7 +74,7 @@ export const TextField = React.forwardRef<HTMLInputElement, SuperInputTextPropsT
             disabled={disabled}
             id={finalId}
             onChange={onChangeCallback}
-            placeholder={onReset ? 'Input search' : error ? 'Error' : 'Input'}
+            placeholder={error ? 'Error' : 'Input'}
             ref={ref}
             type={type === 'password' && isVisible ? 'text' : type}
             value={value}

@@ -18,7 +18,7 @@ export const FormInput = <T extends FieldValues>({
   ...restProps
 }: Props<T>) => {
   const {
-    field: { name: fieldName, onBlur, onChange, ref, value, ...field },
+    field: { name: fieldName, onBlur, onChange, ref, ...field },
     fieldState: { error },
   } = useController({ control, defaultValue, disabled, name, rules, shouldUnregister })
 
@@ -28,8 +28,9 @@ export const FormInput = <T extends FieldValues>({
       disabled={disabled}
       error={error?.message}
       name={fieldName}
+      onBlur={onBlur}
+      onChange={onChange}
       ref={ref}
-      value={value}
       {...field}
     />
   )
