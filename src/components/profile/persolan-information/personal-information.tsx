@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 
 import { PersonalInformationForm } from '@/components/profile/personal-information-form/personal-information-form'
 import { Button } from '@/components/ui/button'
@@ -16,6 +16,7 @@ type PersonalInformationProps = {
   img: string
   name: string
 }
+
 export const PersonalInformation = ({
   editModeDefault = false,
   email,
@@ -23,6 +24,21 @@ export const PersonalInformation = ({
   name,
 }: PersonalInformationProps) => {
   const [editMode, setEditMode] = useState<boolean>(editModeDefault)
+  const [imageSrc, setImageSrc] = useState<string>(img)
+  const [nickname, setNickname] = useState<string>(name)
+
+  const onChangeInputFile = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+
+    if (file) {
+      const reader = new FileReader()
+
+      reader.onloadend = () => {
+        setImageSrc(reader.result as string)
+      }
+      reader.readAsDataURL(file)
+    }
+  }
 
   return (
     <Card className={s.PersonalInformation}>
@@ -30,20 +46,30 @@ export const PersonalInformation = ({
         Personal Information
       </Typography>
       <div className={s.Avatar}>
-        <img alt={'avatar'} src={img} />
+        <img alt={'avatar'} src={imageSrc} />
         {!editMode && (
           <button className={s.ButtonEdit}>
+            <input
+              accept={'image/png, image/jpeg'}
+              className={s.ButtonEditInput}
+              onChange={onChangeInputFile}
+              type={'file'}
+            />
             <Edit />
           </button>
         )}
       </div>
       {editMode ? (
-        <PersonalInformationForm name={name} setEditMode={setEditMode} />
+        <PersonalInformationForm
+          name={nickname}
+          setEditMode={setEditMode}
+          setNickname={setNickname}
+        />
       ) : (
         <>
           <div className={s.Name}>
             <Typography as={'span'} variant={'h2'}>
-              {name}
+              {nickname}
             </Typography>
             <button
               className={clsx(s.ButtonEdit, s.ButtonEditTransparent)}

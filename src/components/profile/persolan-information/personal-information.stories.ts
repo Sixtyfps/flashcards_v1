@@ -7,7 +7,7 @@ import { PersonalInformation } from './personal-information'
 const meta = {
   component: PersonalInformation,
   tags: ['autodocs'],
-  title: 'Components/PersonalInformation',
+  title: 'Profile/PersonalInformation',
 } satisfies Meta<typeof PersonalInformation>
 
 export default meta
