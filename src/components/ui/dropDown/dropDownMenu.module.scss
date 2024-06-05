@@ -2,10 +2,11 @@
   background-color: #333;
   color: #fff;
   padding: 12px;
-  border: 1.2px solid grey;
-  margin: 8px 0;
+  border: 1px solid grey;
+  margin: 6.8px 0;
   right: 0;
   border-radius: 2px;
+  z-index: 20;
 }
 
 .divider {
@@ -20,7 +21,7 @@
   border: 1.2px solid gray;
   content: '';
   position: absolute;
-  top: 1.74px;
+  top: 0.6px;
   right: 7px;
   border-bottom: 1px solid transparent;
   border-right: 1px solid transparent;
@@ -64,8 +65,8 @@
 }
 
 .imageIconName {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   background: black;
   align-items: center;
   display: flex;
@@ -77,4 +78,16 @@
 }
 .imageIconName:hover {
   box-shadow: 0 0 10px white;
+}
+
+.profileContainer {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.profileText {
+  text-decoration: underline dashed;
+  display: flex;
+  align-items: center;
 }

@@ -7,14 +7,14 @@ import { SingOutSvg } from '@/images/icons/dropDown/SingOutSvg'
 
 import s from '@/components/ui/dropDown/dropDownMenu.module.scss'
 
-type Props = {
-  email: string
+export type UserDropdownProps = {
+  email: null | string
   name: string
   photo: string
   photoDesc: string
 }
 
-export const UserDropdown = ({ email, name, photo, photoDesc }: Props) => {
+export const UserDropdown = ({ email, name, photo, photoDesc }: UserDropdownProps) => {
   const getInitials = (name: string): string => name[0].toUpperCase()
 
   const profileImage = photo ? (
@@ -25,7 +25,7 @@ export const UserDropdown = ({ email, name, photo, photoDesc }: Props) => {
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
-      <DropDownMenu trigger={profileImage}>
+      <DropDownMenu name={name} trigger={profileImage}>
         <DropDownItem className={s.dropdownItemHeader}>
           {profileImage}
           <div>

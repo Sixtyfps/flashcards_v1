@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { UserDropdown } from '@/components/layout/header/user-dropdown/user-dropdown'
+import { Header } from '@/components/layout/header/header'
 
 const meta = {
-  component: UserDropdown,
+  component: Header,
   tags: ['autodocs'],
-  title: 'Components/DropDown',
-} satisfies Meta<typeof UserDropdown>
+  title: 'Components/layout/Header',
+} satisfies Meta<typeof Header>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -20,18 +20,20 @@ const user = {
   userName: 'Artsiom',
 }
 
-export const WorkMenuWithoutImages: Story = {
+export const HeaderWithAutorization: Story = {
   args: {
     email: user.email,
+    isLoggedIn: true,
     name: user.userName,
     photo: '',
     photoDesc: user.photo.alt,
   },
 }
 
-export const WorkMenuWithImages: Story = {
+export const HeaderWithoutAutorization: Story = {
   args: {
     email: user.email,
+    isLoggedIn: false,
     name: user.userName,
     photo: user.photo.src,
     photoDesc: user.photo.alt,
