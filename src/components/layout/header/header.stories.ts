@@ -23,7 +23,7 @@ const user = {
 export const HeaderWithAutorization: Story = {
   args: {
     email: user.email,
-    isLoggedIn: true,
+    isAuthenticated: true,
     name: user.userName,
     photo: '',
     photoDesc: user.photo.alt,
@@ -33,7 +33,7 @@ export const HeaderWithAutorization: Story = {
 export const HeaderWithoutAutorization: Story = {
   args: {
     email: user.email,
-    isLoggedIn: false,
+    isAuthenticated: false,
     name: user.userName,
     photo: user.photo.src,
     photoDesc: user.photo.alt,
