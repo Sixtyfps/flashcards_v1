@@ -9,30 +9,28 @@ import s from './personal-information-form.module.scss'
 
 type Props = {
   name: string
-  setEditMode: (editMode: boolean) => void
-  setNickname: (nickname: string) => void
+  onSubmit: (data: ProfileEditValues) => void
 }
 
-export type ProfileValues = z.infer<typeof profileSchema>
+export type ProfileEditValues = z.infer<typeof profileSchema>
 
 const profileSchema = z.object({
   name: z.string().min(2),
 })
 
-export const PersonalInformationForm = ({ name, setEditMode, setNickname }: Props) => {
+export const PersonalInformationForm = ({ name, onSubmit }: Props) => {
   const {
     control,
     formState: { errors },
     handleSubmit,
-  } = useForm<ProfileValues>({ resolver: zodResolver(profileSchema) })
+  } = useForm<ProfileEditValues>({ resolver: zodResolver(profileSchema) })
 
-  const onSubmit = handleSubmit(data => {
-    setEditMode(false)
-    setNickname(data.name)
+  const onSubmitForm = handleSubmit(data => {
+    onSubmit(data)
   })
 
   return (
-    <form className={s.Form} onSubmit={onSubmit}>
+    <form className={s.Form} onSubmit={onSubmitForm}>
       <FormInput
         control={control}
         defaultValue={name}
