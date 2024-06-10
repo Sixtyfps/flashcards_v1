@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button'
 import {
   Table,
   TableBody,
@@ -6,17 +7,16 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/tables/tables'
-import { Button } from '@/components/ui/button'
-import { PlayCircleIcons } from '@/images/icons/Table/PlayCircleIcons'
-import { EditIcons } from '@/images/icons/Table/EditIcons'
 import { DeleteIcons } from '@/images/icons/Table/DeleteIcons'
+import { EditIcons } from '@/images/icons/Table/EditIcons'
+import { PlayCircleIcons } from '@/images/icons/Table/PlayCircleIcons'
 
 type ItemsProps = {
+  by: string
+  counterCard: number
   id: number
   name: string
-  counterCard: number
   updated: string
-  by: string
 }
 
 type Props = {
@@ -45,7 +45,11 @@ export const TableForStorybook = ({ items }: Props) => {
               <TableDataCell>
                 <Button variant={'icon'}>
                   <PlayCircleIcons />
+                </Button>
+                <Button variant={'icon'}>
                   <EditIcons />
+                </Button>
+                <Button variant={'icon'}>
                   <DeleteIcons />
                 </Button>
               </TableDataCell>

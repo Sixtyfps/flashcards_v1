@@ -17,17 +17,26 @@ export type UserDropdownProps = {
 export const UserDropdown = ({ email, name, photo, photoDesc }: UserDropdownProps) => {
   const getInitials = (name: string): string => name[0].toUpperCase()
 
-  const profileImage = photo ? (
+  const imageDisplay = photo ? (
     <img alt={photoDesc} className={s.imageIconName} src={photo} />
   ) : (
     <p className={s.imageIconName}>{getInitials(name)}</p>
   )
 
+  const profileImage = (
+    <div className={s.profileContainer}>
+      <Typography className={s.profileText} variant={'subtitle1'}>
+        {name}
+      </Typography>
+      {imageDisplay}
+    </div>
+  )
+
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
-      <DropDownMenu name={name} trigger={profileImage}>
+      <DropDownMenu trigger={profileImage}>
         <DropDownItem className={s.dropdownItemHeader}>
-          {profileImage}
+          {imageDisplay}
           <div>
             <Typography style={{ fontSize: '14px' }} variant={'subtitle2'}>
               {email}

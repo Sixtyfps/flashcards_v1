@@ -87,7 +87,15 @@
 }
 
 .profileText {
-  text-decoration: underline dashed;
+  position: relative;
   display: flex;
   align-items: center;
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    border: 1px dashed white;
+    width: 100%;
+  }
 }
