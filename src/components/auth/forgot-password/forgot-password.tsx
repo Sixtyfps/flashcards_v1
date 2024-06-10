@@ -32,11 +32,17 @@ export const ForgotPassword = ({ onSubmit }: Props) => {
         Forgot your password?
       </Typography>
       <form onSubmit={onSubmitForm}>
-        <FormInput control={control} label={'Email'} name={'email'} placeholder={''} />
+        <FormInput
+          autoComplete={'email'}
+          control={control}
+          label={'Email'}
+          name={'email'}
+          placeholder={''}
+        />
         <Typography as={'div'} className={s.Label} variant={'body2'}>
           Enter your email address and we will send you further instructions
         </Typography>
-        <Button className={s.Button} fullWidth>
+        <Button className={s.Button} fullWidth type={'submit'}>
           Send Instructions
         </Button>
       </form>
