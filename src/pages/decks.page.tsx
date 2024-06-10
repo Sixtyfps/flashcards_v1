@@ -1,3 +1,5 @@
+import { Page } from '@/components/ui/page/page'
+
 export function DecksPage() {
-  return <div>Decks page</div>
+  return <Page>Decks</Page>
 }
