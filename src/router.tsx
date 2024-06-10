@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom'
 
 import { DecksPage } from '@/pages/decks.page'
+import { ErrorPage } from '@/pages/error-page/error-page'
 
 const publicRoutes: RouteObject[] = [
   {
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
   },
   ...publicRoutes,
   {
-    element: <p>404</p>,
+    element: <ErrorPage />,
     path: '*',
   },
 ])
