@@ -1,32 +1,13 @@
 .PersonalInformation {
-  padding: 33px 15px 40px;
+  padding: 33px 36px 40px;
   align-items: center;
 }
 .Title {
   margin-bottom: 27px;
 }
 
-.Avatar {
-  display: flex;
-  justify-content: center;
-  width: fit-content;
-  margin: 0 auto 10px;
-  position: relative;
-  img {
-    width: 96px;
-    height: 96px;
-    border-radius: 50%;
-    overflow: hidden;
-    object-fit: cover;
-  }
-  .ButtonEdit {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-  }
-}
-
 .ButtonEdit {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,18 +22,4 @@
   &:hover {
     background-color: var(--color-accent-500);
   }
-}
-
-.Name {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  .ButtonEdit {
-    margin-left: 5px;
-  }
-}
-
-.Email {
-  color: var(--color-dark-100);
-  margin-bottom: 13px;
 }

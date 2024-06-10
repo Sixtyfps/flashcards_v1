@@ -1,46 +1,49 @@
-import { Button } from '@/components/ui/button'
+import { useState } from 'react'
+
 import { Card } from '@/components/ui/card'
 import { Typography } from '@/components/ui/typography'
-import Edit from '@/images/icons/Edit'
-import Logout from '@/images/icons/Logout'
-import clsx from 'clsx'
 
 import s from './personal-information.module.scss'
 
+import { PersonalInformationInfo } from './persolan-information-info/personal-information-info'
+import { PersonalInformationAvatar } from './personal-information-avatar/personal-information-avatar'
+import {
+  PersonalInformationForm,
+  ProfileEditValues,
+} from './personal-information-form/personal-information-form'
+
 type PersonalInformationProps = {
+  editModeDefault?: boolean
   email: string
   img: string
   name: string
 }
-export const PersonalInformation = ({ email, img, name }: PersonalInformationProps) => {
+
+export const PersonalInformation = ({
+  editModeDefault = false,
+  email,
+  img,
+  name,
+}: PersonalInformationProps) => {
+  const [editMode, setEditMode] = useState<boolean>(editModeDefault)
+  const [nickname, setNickname] = useState<string>(name)
+
+  const onSubmit = (data: ProfileEditValues) => {
+    setNickname(data.name)
+    setEditMode(false)
+  }
+
   return (
     <Card className={s.PersonalInformation}>
       <Typography as={'h1'} className={s.Title} variant={'h1'}>
         Personal Information
       </Typography>
-      <div className={s.Avatar}>
-        <img alt={'avatar'} src={img} />
-        <button className={s.ButtonEdit}>
-          <Edit />
-        </button>
-      </div>
-      <div className={s.Name}>
-        <Typography as={'span'} variant={'h2'}>
-          {name}
-        </Typography>
-        <button className={clsx(s.ButtonEdit, s.ButtonEditTransparent)}>
-          <Edit />
-        </button>
-      </div>
-      <Typography as={'div'} className={s.Email} variant={'body2'}>
-        {email}
-      </Typography>
-      <Button variant={'secondary'}>
-        <Logout />
-        <Typography as={'span'} variant={'subtitle2'}>
-          Logout
-        </Typography>
-      </Button>
+      <PersonalInformationAvatar editMode={editMode} img={img} />
+      {editMode ? (
+        <PersonalInformationForm name={nickname} onSubmit={onSubmit} />
+      ) : (
+        <PersonalInformationInfo email={email} name={nickname} setEditMode={setEditMode} />
+      )}
     </Card>
   )
 }
